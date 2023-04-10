@@ -11,7 +11,7 @@ def get_remote_address() -> str:
      (or 127.0.0.1 if none found)
 
     """
-    return request.remote_addr or "127.0.0.1"
+    return request.headers.get('CF-Connecting-IP') or "127.0.0.1"
 
 
 def get_qualified_name(callable: Callable[..., Any]) -> str:
